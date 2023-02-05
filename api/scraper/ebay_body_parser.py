@@ -22,7 +22,8 @@ class EbayBodyParser:
         name = self.get_name_template1()
         if(name==""):
             name = self.get_name_template2()
-        return name
+            
+        return name.strip()
 
     # Extract product price
     def get_ebay_product_price(self):
