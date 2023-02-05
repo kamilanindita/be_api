@@ -17,3 +17,10 @@ class ScrapProductResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ["name", "price", "currency_code", "image_url", "marketplace"]
+
+class TotalScrapProductSerializer(serializers.ModelSerializer):
+    total =  serializers.IntegerField()
+
+    class Meta:
+        model = Product
+        fields = [ "marketplace", "total"]
