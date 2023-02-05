@@ -8,14 +8,14 @@ class Parser:
 
     def extract(self):
         if(self.marketplace=="amazon"):
-            print("amazon extracting")
             amazonBodyParser = AmazonBodyParser(self.soup)
             return amazonBodyParser.get_amazon_extract()
 
         elif(self.marketplace=="ebay"):
-            print("ebay extracting")
             ebayBodyParser = EbayBodyParser(self.soup)
             return ebayBodyParser.get_ebay_extract()
+        else:
+            return "marketplace not available"
         
     
 
