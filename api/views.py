@@ -15,26 +15,33 @@ class ScrapApiView(APIView):
             scraper = Scraper(url)
             result = scraper.get_data()
 
-            data = {
-                'name': result['name'], 
-                'price': result["price"], 
-                'currency_code': result["currency_code"],
-                'image_url':result["image_url"],
-                'url_site': url,
-                'marketplace': result["marketplace"]
-            }
+            if  type(result) != str and result['name'] != "" and result["price"] !="":
+                data = {
+                    'name': result['name'], 
+                    'price': result["price"], 
+                    'currency_code': result["currency_code"],
+                    'image_url':result["image_url"],
+                    'url_site': url,
+                    'marketplace': result["marketplace"]
+                }
 
-            # validator before save to db 
-            serializer = SaveScrapProductSerializer(data=data)
-            if serializer.is_valid():
-                # save scrap product data
-                serializer.save()
+                # validator before save to db 
+                serializer = SaveScrapProductSerializer(data=data)
+                if serializer.is_valid():
+                    # save scrap product data
+                    serializer.save()
 
-                scrapProductResponseSerializer = ScrapProductResponseSerializer(serializer.data)
+                    scrapProductResponseSerializer = ScrapProductResponseSerializer(serializer.data)
 
-                return Response(scrapProductResponseSerializer.data, status=status.HTTP_200_OK)
+                    return Response(scrapProductResponseSerializer.data, status=status.HTTP_200_OK)
 
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+            elif type(result) == str:
+                return Response({ "message": result }, status=status.HTTP_400_BAD_REQUEST)
+                
+            else:    
+                return Response({ "message": "product not founda" }, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(validator.errors, status=status.HTTP_400_BAD_REQUEST)
 
