@@ -11,8 +11,7 @@ class Scraper:
         marketplace = self.url.split(".")[1]
 
         if(marketplace=="amazon" or marketplace=="ebay"):                                                                                                                                                         
-            headers = ({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36", "Accept-Encoding":"gzip, deflate", "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT":"1","Connection":"close", "Upgrade-Insecure-Requests":"1"})
-            
+            headers = ({'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36','Accept-Language': 'en-US, en;q=0.5'})
             # HTTP Request
             webpage = requests.get(self.url, headers=headers, timeout=30)
 
