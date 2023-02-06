@@ -31,10 +31,10 @@ class AmazonBodyParser:
         if(price==""):
             price = self.get_price_template2()
         
-        currency_code = "USD"
+        currency_code = "USD" if len(price) > 0 else ""
 
         # convert to float
-        price = float(re.findall("\d+\.\d+", price.replace(",", ""))[0])
+        price = float(re.findall("\d+\.\d+", price.replace(",", ""))[0]) if len(price) > 0 else ""
 
         return { "price": price, "currency_code": currency_code}
 

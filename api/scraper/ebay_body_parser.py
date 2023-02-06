@@ -36,9 +36,14 @@ class EbayBodyParser:
             price = self.get_price_template3()
 
         # get currency_code
-        currency_code = price.split(" ")[0] + "D"
+        currency_code = ""
+        if(" " in price):
+            currency_code = price.split(" ")[0]
+            if("$" in price):
+                currency_code = currency_code + "D"
+
         # convert to float
-        price = float(re.findall("\d+\.\d+", price.replace(",", ""))[0])
+        price = float(re.findall("\d+\.\d+", price.replace(",", ""))[0]) if len(price) else ""
 
         return { "price": price, "currency_code": currency_code}
 
