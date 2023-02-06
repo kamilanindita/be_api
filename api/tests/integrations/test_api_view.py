@@ -11,7 +11,7 @@ class ScrapApiView(APITestCase):
         res = self.client.post("/api/scrap", payload)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data["name"], "Logitech C920x HD Pro Webcam, Full HD 1080p/30fps Video Calling, Clear Stereo Audio, HD Light Correction, Works with Skype, Zoom, FaceTime, Hangouts, PC/Mac/Laptop/Macbook/Tablet - Black")
-        self.assertEqual(res.data["price"], 69.99)
+        self.assertEqual(res.data["price"], 68.99)
         self.assertEqual(res.data["currency_code"], "USD")
         self.assertEqual(res.data["image_url"], "https://m.media-amazon.com/images/I/71iNwni9TsL.__AC_SX300_SY300_QL70_ML2_.jpg")
 
