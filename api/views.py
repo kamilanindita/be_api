@@ -41,7 +41,7 @@ class ScrapApiView(APIView):
                 return Response({ "message": result }, status=status.HTTP_400_BAD_REQUEST)
                 
             else:    
-                return Response({ "message": "product not founda" }, status=status.HTTP_400_BAD_REQUEST)
+                return Response({ "message": "product not found" }, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(validator.errors, status=status.HTTP_400_BAD_REQUEST)
 
