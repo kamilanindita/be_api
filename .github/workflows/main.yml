@@ -21,10 +21,9 @@ jobs:
     name: Deploy Test
     runs-on: ubuntu-latest
     steps:
-      steps:
-        - name: Install SSH Key
-          uses: shimataro/ssh-key-action@v2
-          with:
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-        - name: Deploy Test
-          run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} cat hello.txt
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy Test
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} cat hello.txt
