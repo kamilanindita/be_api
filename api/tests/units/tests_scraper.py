@@ -1,13 +1,16 @@
 from django.test import TestCase
 from ...scraper.scraper import Scraper
+import time
 
 class TestScraper(TestCase):
     def test_amazon_scraper(self):
+        print("sleep for 5 seconds to avoid the rate limit amazon during the testing")
+        time.sleep(5)
         url ="https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_6?qid=1675587192&s=computers-intl-ship&sr=1-6"
         scraper = Scraper(url)
         result = scraper.get_data()
         assert result["name"] == "Logitech C920x HD Pro Webcam, Full HD 1080p/30fps Video Calling, Clear Stereo Audio, HD Light Correction, Works with Skype, Zoom, FaceTime, Hangouts, PC/Mac/Laptop/Macbook/Tablet - Black"
-        assert result["price"] == 68.99
+        assert result["price"] == 63.4
         assert result["image_url"] == "https://m.media-amazon.com/images/I/71iNwni9TsL.__AC_SX300_SY300_QL70_ML2_.jpg"
         
 

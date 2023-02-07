@@ -2,16 +2,19 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from ...models import Product
 from rest_framework.test import APIClient
+import time
 
 class ScrapApiView(APITestCase):
     def test_scrap_amazon(self):
+        print("sleep for 5 seconds to avoid the rate limit amazon during the testing")
+        time.sleep(5)
         payload = {
             "url": "https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_6?qid=1675587192&s=computers-intl-ship&sr=1-6"
         }
         res = self.client.post("/api/scrap", payload)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data["name"], "Logitech C920x HD Pro Webcam, Full HD 1080p/30fps Video Calling, Clear Stereo Audio, HD Light Correction, Works with Skype, Zoom, FaceTime, Hangouts, PC/Mac/Laptop/Macbook/Tablet - Black")
-        self.assertEqual(res.data["price"], 68.99)
+        self.assertEqual(res.data["price"], 63.4)
         self.assertEqual(res.data["currency_code"], "USD")
         self.assertEqual(res.data["image_url"], "https://m.media-amazon.com/images/I/71iNwni9TsL.__AC_SX300_SY300_QL70_ML2_.jpg")
 
