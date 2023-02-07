@@ -1,0 +1,16 @@
+version: '3.4'
+    
+services:
+  api:
+    image: be_api:0.0.1
+    container_name: be_api
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./db/db.sqlite3:/app/db.sqlite3
+    env_file:
+      - '.env'
