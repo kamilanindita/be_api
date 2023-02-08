@@ -99,12 +99,17 @@ class EbayBodyParser:
         return price
 
     def get_image_url_template1(self):
-        image_url = ""
         try:
-            image_url = self.soup.find("div", attrs={"class":"ux-image-carousel-item active image"}).find("img", alt=True)["src"]
+            image = self.soup.find("div", attrs={"class":"ux-image-carousel-item active image"}).find("img", alt=True)
+            if "data-src" in str(image):
+                return image["data-src"]
+            if "src" in str(image):
+                return image["src"]
+            
         except AttributeError:
-            image_url = ""
-        return image_url
+            return ""
+        
+        return ""
 
     def get_image_url_template2(self):
         image_url = ""
