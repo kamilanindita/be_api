@@ -14,6 +14,8 @@ jobs:
         uses: actions/checkout@master
       - name: Install requirements
         run: pip install -r requirements.txt
+      - name: Set Env
+        run: cp .env.example .env
       - name: Execute tests
         run: python3 manage.py test --settings=be_api.test_settings
 
