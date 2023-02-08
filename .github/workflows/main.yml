@@ -20,7 +20,7 @@ jobs:
   deploy:
     if: ${{ always() }}
     needs: test
-    name: Deploy Test
+    name: Deploy Production
     runs-on: ubuntu-latest
     steps:
       - name: Install SSH Key
@@ -30,5 +30,5 @@ jobs:
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      - name: Deploy Test
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} cat hello.txt
+      - name: Deploy to Server
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd be_api && git pull && sudo systemctl status gunicorn |  sed -n 's/.*Main PID:'' \(.*\)$/\1/g p' | cut -f1 -d' ' | xargs kill -HUP"
