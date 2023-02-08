@@ -54,7 +54,7 @@ ___
 Database testing <a href="#" >downlaod.</a>
 
 ## Continuous integration (CI) / Continuous  deployment/delivery (CD)
-    Generate the SSH key on server. Set public ky on authorization and set private key on environment variables github
+    Generate the SSH key on server. Adding the Public Key to authorized_keys. Setting github action environment variables on SSH_PRIVATE_KEY, SSH_HOST and SSH_USERNAME.
 
     Stage/Job 1 (Testing)
     1. Install python3-pip
