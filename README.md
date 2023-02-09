@@ -51,7 +51,7 @@ ___
     
         Note: To prevent data from being lost during shutdown, a mounting process has been carried out between the database in the container and the location in the host directory (in the db directory in this project). `./db/db.sqlite3:/app/db.sqlite3`
 
-Database testing <a href="#" >downlaod.</a>
+Database local testing <a href="https://drive.google.com/file/d/1mGJdHqNX6fm5OSjxpIgXKn74FMepnkjo/view?usp=sharing" >downlaod.</a>
 
 ## Continuous integration (CI) / Continuous  deployment/delivery (CD)
     Generate the SSH key on server. Adding the Public Key to authorized_keys. Setting github action environment variables on SSH_PRIVATE_KEY, SSH_HOST and SSH_USERNAME.
@@ -63,7 +63,7 @@ Database testing <a href="#" >downlaod.</a>
     4. Setup Env
     5. Execute tests
 
-    Stage/Job 2 (Deploy to Prodution)
+    Stage/Job 2 (Deploy to Production)
     1. Install SSH Key
     2. Adding Known Hosts
     3. Deploy to Server
@@ -82,6 +82,8 @@ Database testing <a href="#" >downlaod.</a>
     10. Configure Gunicorn
     11. Configure Nginx to Proxy Pass to Gunicorn
 
+Database Production <a href="https://drive.google.com/file/d/11h_6yqPDHcUvVN9eT2t6fa51jppUrYCe/view?usp=share_link" >downlaod.</a>
+
 ## API Documentation
     - Scraping Product
         POST: http://localhost:8000/api/scrap
@@ -93,10 +95,10 @@ Database testing <a href="#" >downlaod.</a>
     - Total Scraping Product
         GET: http://localhost:8000/api/scrapped/total
         GET: http://localhost:8000/api/scrapped/total?date={yyyy-mm-dd}
-        GET: http://localhost:8000/api/scrapped/total?date_start={yyyy-mm-dd}&date_end={yyyy-mm-dd}
+        GET: http://localhost:8000/api/scrapped/total?from={yyyy-mm-dd}&to={yyyy-mm-dd}
         GET: http://localhost:8000/api/scrapped/total?month={1-12}
     
-Postman Export collections <a href="#" >download</a>
+Postman Export collections <a href="https://drive.google.com/file/d/11WTwlKntOeG0fNf0v7Ovk3Z0QLMYBBBj/view?usp=share_link" >download</a>
 
 ## DEMO
-    Host:
+    Host: http://54.169.43.55
